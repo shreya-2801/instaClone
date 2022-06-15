@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Input } from "antd";
 import { LoginButton } from "../Style/Style";
 import { Link } from "react-router-dom";
 import SearchFilter from "../Store/SearchFilter";
+import axios from "axios";
 
 const { Search } = Input;
 const NavBar = () => {
@@ -10,7 +11,16 @@ const NavBar = () => {
   const onSearch = (value) => {
     setSearchData(value);
   };
-  console.log(searchData)
+  useEffect(() => {
+    console.log(searchData, "searchdata");
+    axios
+      .get(
+        'https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline'
+      )
+
+      .then((responseData) => console.log(responseData.data));
+  }, [searchData]);
+
   return (
     <>
       <div
@@ -32,10 +42,10 @@ const NavBar = () => {
             margin: " 0 15px",
           }}
         />
-        <Link to="/login"></Link>
-        <LoginButton>Log in</LoginButton>
+        <Link to="/login">
+          <LoginButton>Log in</LoginButton>
+        </Link>
       </div>
-      <SearchFilter  data={searchData}/>
     </>
   );
 };

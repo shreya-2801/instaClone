@@ -4,27 +4,29 @@ import React, { useEffect, useState } from "react";
 
 
 import { BlogWrap } from "../Style/Style";
+import useFetch from "../UseFetch";
 
 const Beauty = () => {
   const [beautyData, setBeautyData] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [modalData, setModalData] = useState();
   const { Option } = Select;
+  const {data,loading} = useFetch("https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline");
 
-  useEffect(() => {
-    axios
-      .get(
-        "https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline"
-      )
-      .then(function (response) {
-        console.log(response.data,"beauty")
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       "https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline"
+  //     )
+  //     .then(function (response) {
+  //       console.log(response.data,"beauty")
 
-        setBeautyData(response.data);
-      })
-      .catch(function (error) {
-        console.error(error);
-      });
-  }, []);
+  //       setBeautyData(response.data);
+  //     })
+  //     .catch(function (error) {
+  //       console.error(error);
+  //     });
+  // }, []);
 
   function sortObj(obj) {
     let priceArr = [];
