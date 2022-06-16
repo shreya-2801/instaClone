@@ -13,8 +13,9 @@ const Beauty = () => {
   const { Option } = Select;
   const {data,loading} = useFetch("https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline");
 
-  // useEffect(() => {
+  useEffect(() => {
   //   axios
+  // setBeautyData(data);
   //     .get(
   //       "https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline"
   //     )
@@ -26,7 +27,7 @@ const Beauty = () => {
   //     .catch(function (error) {
   //       console.error(error);
   //     });
-  // }, []);
+  }, []);
 
   function sortObj(obj) {
     let priceArr = [];
@@ -45,12 +46,12 @@ const Beauty = () => {
   }
 
   const handleChange = (value) => {
-    const data = sortObj(beautyData);
-   
+    const sorted_data = sortObj(data);
+   console.log(sorted_data);
 
     value === "high"
-      ? setBeautyData(data.flat().reverse())
-      : setBeautyData(data.flat());
+      ? setBeautyData(sorted_data.flat().reverse())
+      : setBeautyData(sorted_data.flat());
   };
   const handleOk = () => {
     setIsModalVisible(false);
@@ -61,8 +62,8 @@ const Beauty = () => {
   };
 
   const showModal = (id) => {
-    const data = beautyData.find((item) => item.id === id);
-    setModalData(data.description);
+    const show_data = data.find((item) => item.id === id);
+    setModalData(show_data.description);
     setIsModalVisible(true);
   };
 
