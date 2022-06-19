@@ -1,70 +1,124 @@
+import { Card, Col, Row } from "antd";
 import React from "react";
-
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 const Dashboard = () => {
+  const { Meta } = Card;
+  const navigate = useNavigate();
   return (
-    <div>
-      <div>
-        <h3>Beauty products near you</h3>
-        <Link to="/dashboard/beauty">
-          <img
-            src="https://d3t32hsnjxo7q6.cloudfront.net/i/af1f35f15ee64cc1003f1ccfc6451d71_ra,w158,h184_pa,w158,h184.jpeg"
-            alt="Loading...."
-            style={{
-              width: "50px",
-              height: "50px",
-              borderRadius: "50%",
-              border: "1px solid black",
+    <DashboardWrap>
+      <Row gutter={[30, 30]}>
+        <Col xs={24} sm={12} md={12} lg={6} xl={6} xxl={6}>
+          <Card
+            hoverable
+            style={{ width: 240 }}
+            onClick={() => {
+              navigate("/dashboard/beauty");
             }}
-          />
-          <div>Beauty</div>
-        </Link>
-      </div>
-      <div >
-        <h3>Recipes</h3>
-        <Link to="/dashboard/recipes">
-          <img
-            src="https://img.buzzfeed.com/tasty-app-user-assets-prod-us-east-1/recipes/27e868e06ffb49aeb558572a9187f56b.png"
-            alt="Loading...."
-            style={{ width: "50px", height: "50px", borderRadius: "50%" }}
-          />
-          <div>Recipes</div>
-          
-        </Link>
-      </div>
-      <h3>Shop by store</h3>
-      <div style={{display:"flex"}}>
-      <div style={{ margin:"20px 23px"}}>
-        <Link to="/dashboard/recipes">
-          <img
-            src="https://img.buzzfeed.com/tasty-app-user-assets-prod-us-east-1/recipes/2fe96fbb83cb4023aef32f209aa7c1c7.jpeg"
-            alt="Loading...."
-            style={{  width: "200px",
-            height: "100px", borderRadius: "15px"  }}
-          />
-          <div>Zomato</div>
-        </Link>
-        </div>
-        <div style={{ margin:"20px 23px"}}>
-        <Link to="/dashboard/beauty">
-          <img
-            src="https://d3t32hsnjxo7q6.cloudfront.net/i/fb79e7facf701176d4113527c284613f_ra,w158,h184_pa,w158,h184.png"
-            alt="Loading...."
-            style={{
-              width: "200px",
-              height: "100px",
-              borderRadius: "15px",
-              border: "1px solid black",
-             
+            cover={
+              <img
+                alt="example"
+                src="https://cdn.theculturetrip.com/wp-content/uploads/2018/01/shutterstock_372453505.jpg"
+              />
+            }
+          >
+            <Meta
+              title="Beauty products"
+              // description=""
+            />
+          </Card>
+        </Col>
+        <Col xs={24} sm={12} md={12} lg={6} xl={6} xxl={6}>
+          <Card
+            hoverable
+            style={{ width: 240 }}
+            onClick={() => {
+              navigate("/dashboard/recipes");
             }}
-          />
-          <div>maybelline</div>
-        </Link>
-        </div>
-      </div>
-    </div>
+            cover={
+              <img
+                alt="example"
+                src="https://img.buzzfeed.com/tasty-app-user-assets-prod-us-east-1/recipes/27e868e06ffb49aeb558572a9187f56b.png"
+              />
+            }
+          >
+            <Meta
+              title="Recipes"
+              // description=""
+            />
+          </Card>
+        </Col>
+      </Row>
+
+      <Row gutter={[30, 30]}>
+        <Col>
+          <h3>Shop By Store</h3>
+        </Col>
+      </Row>
+      <Row gutter={[30, 30]}>
+        <Col xs={24} sm={12} md={12} lg={6} xl={6} xxl={6}>
+          <Card
+            hoverable
+            style={{ width: 240 }}
+            onClick={() => {
+              navigate("/dashboard/recipes");
+            }}
+            cover={
+              <img
+                alt="example"
+                src="https://img.buzzfeed.com/tasty-app-user-assets-prod-us-east-1/recipes/2fe96fbb83cb4023aef32f209aa7c1c7.jpeg"
+              />
+            }
+          >
+            <Meta
+              title="Cooking chef- Food Fever"
+              // description=""
+            />
+          </Card>
+        </Col>
+        <Col xs={24} sm={12} md={12} lg={6} xl={6} xxl={6}>
+          <Card
+            hoverable
+            style={{ width: 240 }}
+            onClick={() => {
+              navigate("/dashboard/beauty");
+            }}
+            cover={
+              <img
+                alt="example"
+                src="https://d3t32hsnjxo7q6.cloudfront.net/i/fb79e7facf701176d4113527c284613f_ra,w158,h184_pa,w158,h184.png"
+              />
+            }
+          >
+            <Meta
+              title="Maybelline"
+              // description=""
+            />
+          </Card>
+        </Col>
+      </Row>
+    </DashboardWrap>
   );
 };
 
 export default Dashboard;
+
+export const DashboardWrap = styled.div`
+  padding: 30px;
+  background-color: rgb(238, 238, 238);
+  min-height: calc(100vh - 80px);
+
+  h3 {
+    font-weight: 700;
+    font-size: 26px;
+    color: #aaaaaa;
+    margin: 20px 0;
+  }
+  .ant-card-cover img {
+    height: 160px;
+  }
+  .ant-card {
+    min-height: 200px;
+  }
+`;

@@ -1,24 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Dashboard from "./Components/Pages/Dashboard";
-import Recipes from "./Components/Store/Recipes";
-import 'antd/dist/antd.min.css';
-import Beauty from "./Components/Store/Beauty";
-import NavBar from "./Components/Pages/NavBar";
-import Login from "./Components/Pages/Login";
-
-
+import "antd/dist/antd.min.css";
+import Layout from "./layout/Layout";
+import "react-toastify/dist/ReactToastify.css";
+import "antd/dist/antd.css";
 function App() {
   return (
     <>
-    <NavBar/>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/dashboard/beauty" element={<Beauty />} />
-        <Route path="/dashboard/recipes" element={<Recipes />} />
-       <Route path="/login" element={<Login/>}/>
+        <Route path="*" element={<Layout />} />
       </Routes>
-
     </>
   );
 }
