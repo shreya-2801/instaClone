@@ -11,9 +11,10 @@ const NavBar = () => {
 
   useEffect(() => {
     const item = localStorage.getItem("item");
+    if(item){
     if (item.length) {
       setBadge(JSON.parse(item).length);
-    }
+    }}
   }, [badge]);
 
   console.log("first")
