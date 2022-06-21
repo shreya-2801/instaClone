@@ -17,8 +17,6 @@ const NavBar = () => {
     }}
   }, [badge]);
 
-  console.log("first")
-
   return (
     <>
       <StyledHeaderTop className="sticky-header">
